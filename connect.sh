@@ -11,5 +11,5 @@ nr_grupy=$(($grupa*32))
 nr_komputera=$(($komputer*4+2))
 faktyczny=$(($nr_grupy+$nr_komputera))
 
-
-ssh "172.22.$nr_cwiczenia.$faktyczny"
+echo "ssh pwsz@172.22.$nr_cwiczenia.$faktyczny"
+ssh "pwsz@172.22.$nr_cwiczenia.$faktyczny"

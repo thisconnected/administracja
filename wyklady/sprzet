@@ -1,0 +1,10 @@
+routery cisco 3x  881 1841
+switche hp v1910-24g
+catalyst 2960
+
+do konfiguracji
+telnet 172.31.255.1
+port 20XX
+
+172.31.255.105/24
+172.31.255.1

@@ -1,0 +1,17 @@
+konspekt to sprawozdanie bez wykonania i wnioskow
+
+1 wprowadznie
+  1.1 cel cwiczenia
+  1.2 wymagania wstepne
+2. przebieg cwiczenia
+   2.1 przygotowanie stanowiska
+       schemat z interfejsami bez adresacji
+   2.2 routing statyczny (w cisco)
+   2.2.1 w linuxie
+   2.2.2 weryfikacja
+   	 2.2.2.1 w cisco
+	 2.2.2.1. w linux
+
+   2.3 routing dynamiczny
+   2.3.1 quagga
+   2.3.3 weryfikacja dzialania protokolu
