@@ -38,38 +38,7 @@ function show()
 function menu()
 {
 
- interfaces=$(ip addr show| grep -v vir |
-    awk '
-        # Output function to format results (if any)
-        function outline() {
-            if (link>"") {printf "%s %s %s\n", iface, link, inets}
-        }
-
-        # Interface section starts here
-        $0 ~ /^[1-9]/ {
-            outline();                              # Output anything we previously collected
-            iface=substr($2, 1, index($2,":")-1);   # Capture the interface name
-            inets="";                               # Reset the list of addresses
-            link=""                                 # and MAC too
-        }
-
-        # Capture the MAC
-        $1 == "link/ether" {
-            link=$2                   
-        }
-
-        # Capture an IPv4 address. Concatenate to previous with comma
-        $1 == "inet" {
-            inet=substr($2, 1, index($2,"/")-1);    # Discard /nn subnet mask
-            if (inets>"") inets=inets ",";          # Suffix existing list with comma
-            inets=inets inet                        # Append this IPv4
-        }
-
-        # Input processing has finished
-        END {
-            outline()                               # Output remaining collection
-        }
-    ')
+ interfaces=$(show)
  
  options+=('show configuration')
  options+=('show diffrences')
@@ -181,8 +150,7 @@ function printconf()
     if [ -n "$dns" ]; then
 	echo dns-nameservers $dns
     fi
-
-    }
+}
 
 echo "start"
 cp /etc/network/interfaces /tmp/base.conf
