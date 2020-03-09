@@ -58,3 +58,4 @@ resources/
 #gdb history
 .gdb
 .gdb*
+.png
