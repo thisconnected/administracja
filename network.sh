@@ -1,4 +1,7 @@
 #!/bin/bash
+
+#this script was made to configure interfaces fast for my netowrking lab
+# GPLv3 Patryk Kaniewski
 function show()
 {
     ip addr show| grep -v vir |
