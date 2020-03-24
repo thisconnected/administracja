@@ -1,0 +1,10 @@
+d41d8cd98f00b204e9800998ecf8427e  md5sum.txt
+610af141e79182bdf5ed31cd01c3cf15  routinglogical.png
+52e28431492323757d1319b32507e429  routinglogical.svg
+7fb2f5eb14f57ab885bb9d72c1291c61  routingphysical.drawio
+bf1e6911310997bf3cca61dea11b63f4  routingphysical.png
+4332e180f8d8711257ab21cc6cb0c330  routingphysical.svg
+a9f3a70b04f06a93482f20b9211f6678  sprawozdanie.odt
+bd53b139721be239b378a0130aaa8c4e  sprawozdanie.pdf
+848178912434713280559d45afe3fc35  zadanie.md
+a6eba7d927c6c8f9f0808827b62fdc24  zadanie.md~
