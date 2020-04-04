@@ -10,7 +10,7 @@ function show()
             if (link>"") {printf "%s %s %s\n", iface, link, inets}
         }
 
-        # Interface section starts here
+       
         $0 ~ /^[1-9]/ {
             outline();                              
             iface=substr($2, 1, index($2,":")-1);   #iface
@@ -18,19 +18,17 @@ function show()
             link=""                                 
         }
 
-        # Capture the MAC
+        #mac
         $1 == "link/ether" {
             link=$2                   
         }
 
-        # Capture an IPv4 address. Concatenate to previous with comma
+        #ip4
         $1 == "inet" {
             inet=substr($2, 1, index($2,"/")-1);    #no mask
             if (inets>"") inets=inets ",";          
             inets=inets inet                        #add current to list
         }
-
-        # Input processing has finished
         END {
             outline()                               
         }
