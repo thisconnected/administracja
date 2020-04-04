@@ -6,17 +6,16 @@ function show()
 {
     ip addr show| grep -v vir |
 	awk '
-        #Output function to format results (if any)
         function outline() {
             if (link>"") {printf "%s %s %s\n", iface, link, inets}
         }
 
         # Interface section starts here
         $0 ~ /^[1-9]/ {
-            outline();                              # Output anything we previously collected
-            iface=substr($2, 1, index($2,":")-1);   # Capture the interface name
-            inets="";                               # Reset the list of addresses
-            link=""                                 # and MAC too
+            outline();                              
+            iface=substr($2, 1, index($2,":")-1);   #iface
+            inets="";                               #reset variables
+            link=""                                 
         }
 
         # Capture the MAC
@@ -26,14 +25,14 @@ function show()
 
         # Capture an IPv4 address. Concatenate to previous with comma
         $1 == "inet" {
-            inet=substr($2, 1, index($2,"/")-1);    # Discard /nn subnet mask
-            if (inets>"") inets=inets ",";          # Suffix existing list with comma
-            inets=inets inet                        # Append this IPv4
+            inet=substr($2, 1, index($2,"/")-1);    #no mask
+            if (inets>"") inets=inets ",";          
+            inets=inets inet                        #add current to list
         }
 
         # Input processing has finished
         END {
-            outline()                               # Output remaining collection
+            outline()                               
         }
     '
     }
