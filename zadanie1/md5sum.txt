@@ -17,6 +17,9 @@ c1f0bd94eafa03cbf4c74994f0924707  ospfrouter.svg
 f4624f7c23c47c00900d1b8a5f266b9b  ripproblem1.drawio
 d0e353650dd8ac086ad23e35b392e493  ripproblem1.png
 4431799ae138903abc6dad5268d4fc62  ripproblem1.svg
+25b4463292f6fd387e8ce570a02a0523  routingdesignatedrouter.drawio
+0e73c8d5af20100e6a8b2cb61c496385  routingdesignatedrouter.png
+2f83d73fa913db5109710fad226d0df5  routingdesignatedrouter.svg
 610af141e79182bdf5ed31cd01c3cf15  routinglogical.png
 52e28431492323757d1319b32507e429  routinglogical.svg
 7fb2f5eb14f57ab885bb9d72c1291c61  routingphysical.drawio
@@ -24,7 +27,11 @@ bf1e6911310997bf3cca61dea11b63f4  routingphysical.png
 4332e180f8d8711257ab21cc6cb0c330  routingphysical.svg
 efc90e3d2abacba23c631dfe2435cb1e  routingstatyczny.drawio
 1b4d301c6beead6a158f533838060ca4  routingstatyczny.png
-57fca3b3d14da124a145571a137483fb  sprawozdanie.odt
-19ceca66d4c4643a27085c4c9ddff5eb  sprawozdanie.pdf
+31e58b87068e83ec6cdd5985074a5ab8  sprawozdanie.odt
+b27e7835d0f9dc27639459561cd0f257  sprawozdanie.pdf
+0e9ad1648d6338355ade340548cea60c  stubbyarea.drawio
+26a2619b4f3a9ba795faebba4ccf0cf6  stubbyarea.png
+ec25373d1f8b346042bc88b63565a056  stubbyarea.svg
+d41d8cd98f00b204e9800998ecf8427e  todo.txt
 848178912434713280559d45afe3fc35  zadanie.md
 a6eba7d927c6c8f9f0808827b62fdc24  zadanie.md~
