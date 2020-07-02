@@ -63,3 +63,20 @@
 
     interface enp1s0
     ip ospf cost [koszt]
+
+
+* rounting statyczny
+** na r1:
+  ip r add [siec s3]/24 via [r3 na polaczeniu r1-r3]
+  
+  ip r add [siec s2]/24 via [r2 na polaczeniu r1-r2]
+
+** na r2:
+  ip r add [siec s3]/24 via [r3 na polaczeniu r2-r3]
+  
+  ip r add [siec s1]/24 via [r1 na polaczeniu r1-r2]
+
+** na r3:
+  ip r add [siec s1]/24 via [r1 na polaczeniu r1-r3]
+  
+  ip r add [siec s2]/24 via [r2 na polaczeniu r2-r3]
