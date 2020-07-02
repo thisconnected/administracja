@@ -1,0 +1,115 @@
+% Created 2020-07-02 Thu 13:30
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Patryk Kaniewski}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={Patryk Kaniewski},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.3 (Org mode 9.1.9)}, 
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+\section{konfiguracja}
+\label{sec:org064d810}
+\subsection{instalacja}
+\label{sec:org19e75e1}
+na routerach:
+apt install quagga traceroute tcpdump nmap
+
+na stacjach roboczych bez quagga
+\subsection{prekonfiguracja}
+\label{sec:orge13af27}
+edytowac /etc/sysctl.conf
+\begin{itemize}
+\item net.ip4.ip\(_{\text{forward}}\)=1
+\end{itemize}
+
+pozniej zeby zaladowac to 
+sysctl -p
+
+\section{routing statyczny}
+\label{sec:orga4a91f0}
+\subsection{ip r add}
+\label{sec:org3d5cb81}
+ip r add [destination] via [interface]
+
+na s1 dodac droge do r3 przez r2:
+
+ip r add 192.168.23.3 via 192.168.1.2
+
+na r3 dodac droge do s1 przez r2:
+
+ip r add 192.168.1.1 via 192.168.23.2
+
+\subsection{ip r default}
+\label{sec:org4d2c397}
+ip r add default via [interface]
+\subsection{default route}
+\label{sec:org5989eb1}
+w /etc/network/interfaces
+
+gateway 192.168.0.1
+\section{routing dynamiczny}
+\label{sec:org72b3581}
+\subsection{prekonfiguracja}
+\label{sec:org78dd927}
+stworzyc pliki w /etc/quagga
+\begin{itemize}
+\item zebra.conf
+\item ospfd.conf
+\item ripd.conf
+\end{itemize}
+\subsection{wlaczyc usluge}
+\label{sec:orgdcbd4bf}
+systemctl enable --now ripd
+
+nmap localhost by zobaczyc na ktorych portach sa daemony
+
+\subsection{rip}
+\label{sec:orgb1b1ebc}
+\subsubsection{podstawowa}
+\label{sec:org4d08e2b}
+vtysh 2603
+
+enable
+configure terminal
+router rip
+
+network [adress]/[subnet]
+\subsection{ospf}
+\label{sec:orgb712f9b}
+\subsubsection{podstawowa}
+\label{sec:org9a351ba}
+vtysh 2604
+
+enable
+configure terminal
+router ospf
+
+network [adress]/[subnet]
+\subsubsection{zaawansowana}
+\label{sec:org552ca33}
+wejsc w tryb interfejsu
+
+interface enp1s0
+ip ospf cost [koszt]
+\end{document}

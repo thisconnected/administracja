@@ -1,0 +1,65 @@
+* konfiguracja
+** instalacja
+   na routerach:
+   apt install quagga traceroute tcpdump nmap
+
+   na stacjach roboczych bez quagga
+** prekonfiguracja
+   edytowac /etc/sysctl.conf
+   + net.ip4.ip_forward=1
+
+   pozniej zeby zaladowac to 
+   sysctl -p
+   
+* routing statyczny
+** ip r add
+   ip r add [destination] via [interface]
+
+   na s1 dodac droge do r3 przez r2:
+   # ip r add r3           via r2
+     ip r add 192.168.23.3 via 192.168.1.2
+
+   na r3 dodac droge do s1 przez r2:
+   # ip r add s1          via r2
+     ip r add 192.168.1.1 via 192.168.23.2
+   
+** ip r default
+   ip r add default via [interface]
+** default route
+   w /etc/network/interfaces
+   
+   gateway 192.168.0.1
+* routing dynamiczny
+** prekonfiguracja
+   stworzyc pliki w /etc/quagga
+   - zebra.conf
+   - ospfd.conf
+   - ripd.conf
+** wlaczyc usluge
+   systemctl enable --now ripd
+
+   nmap localhost by zobaczyc na ktorych portach sa daemony
+   
+** rip
+*** podstawowa
+    vtysh 2603
+    
+    enable
+    configure terminal
+    router rip
+    
+    network [adress]/[subnet]
+** ospf
+*** podstawowa
+   vtysh 2604
+   
+   enable
+   configure terminal
+   router ospf
+
+   network [adress]/[subnet]
+*** zaawansowana
+    wejsc w tryb interfejsu
+
+    interface enp1s0
+    ip ospf cost [koszt]
